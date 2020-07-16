@@ -20,7 +20,7 @@ public class maxelement {
 				max=a[i];
 			}
 		}
-		System.out.println("max is"+ max);
+		System.out.println("max is  "+ max);
 
 	}
 
