@@ -1,0 +1,84 @@
+package practice;
+
+import java.util.Scanner;
+
+public class List {
+	
+	class node
+	{
+		int data;
+		node next;
+		node(int d)
+		{
+			this.data=d;
+		this.	next=null;
+		}
+	}
+	node head;
+	//@SuppressWarnings({ "null", "null", "null" })
+	public void insert(int key)
+	{ 		node last=head;
+		    node new_node=new node(key);
+		if(head==null)
+		{
+	new_node.next=head;
+	head=new_node;
+		}
+		else
+		{
+			while(last.next!=null)
+			{
+				last=last.next;
+			}
+			last.next=new_node;
+		
+	}
+	}
+	public int  position(int p)
+	{
+		node temp=head;
+		int c=1;
+		while(temp!=null&&c!=p)
+		{    
+			temp=temp.next;
+			c++;
+		}
+		if(temp==null)
+		{
+			System.out.println("lists is empty");
+		}
+		else
+		{
+			return temp.data;
+		}
+		return 0;
+		
+		}
+	public void display()
+	{
+		node temp=head;
+		while(temp!=null)
+		{
+			System.out.println(temp.data);
+			temp=temp.next;
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner s=new Scanner(System.in);
+		
+		List l=new List();
+		l.insert(1);
+		l.insert(2);
+		l.insert(3);
+		l.display();
+		
+		int r=l.position(2);
+		System.out.println(r);
+		
+		
+
+	}
+
+}
