@@ -1,0 +1,78 @@
+package practice;
+
+import java.util.Stack;
+
+ class infixTopostfix {
+	
+static int prec(char ch)
+{
+	if(ch=='+'||ch=='-')
+	{
+		return 1;
+	}
+	if(ch=='*'||ch=='/')
+	{
+		return 2;
+	}
+	if(ch=='^')
+	{
+		return 3;
+	}
+	return -1;
+}
+	public String infix(String st)
+	{
+		Stack<Character> stack=new Stack<>();
+		String result=new String(" ");
+		for(int i=0;i<st.length();i++)
+		{
+			char c=st.charAt(i);
+			
+			
+			if(Character.isLetterOrDigit(c))
+			{
+				result=result+c;
+			}
+			else if(c=='(')
+			{
+				stack.push(c);
+			}
+			else if(c==')')
+			{ 
+				while(stack.peek()!='(')
+				{
+					result=result+stack.pop();
+				}
+stack.pop();
+				
+			}
+			else
+			{
+				while(!stack.isEmpty()&&prec(c)<=prec(stack.peek()))
+				{
+					result=result+stack.pop();
+				}
+				stack.push(c);
+			}
+		}
+		while(!stack.isEmpty())
+		{
+			if(stack.peek()=='(')
+				return "invlaid";
+			else
+			{
+				result=result+stack.pop();
+			}
+		}
+		return result;
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub\
+		infixTopostfix i=new infixTopostfix();
+		String s="a+b*(c^d-e)^(f+g*h)-i";
+		System.out.println(i.infix(s));
+
+	}
+
+}
