@@ -1,0 +1,40 @@
+package practice;
+
+import java.util.Stack;
+
+public class prefixTopostfix {
+	
+	public static  String preTopo(String s)
+	{
+		Stack<String> stack=new Stack<String>();
+		int l=s.length();
+		for(int i=l -1;i>=0;i--)
+		{
+			char c=s.charAt(i);
+			if(Character.isLetterOrDigit(c))
+			{
+				stack.push(c+" ");
+			}
+			else if(c=='+'||c=='-'||c=='*'||c=='/')
+			{
+				String s1=stack.pop();
+				String  s2=stack.pop();
+				String r= s1+s2+c;
+				stack.push(r);
+			}
+			
+			
+		}
+		return stack.peek();
+			
+	}
+
+	public static void main(String[] args) {
+		String exp="*-A/BC-/AKL";
+		System.out.println(preTopo(exp));
+				
+		// TODO Auto-generated method stub
+
+	}
+
+}
