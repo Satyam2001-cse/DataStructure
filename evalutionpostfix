@@ -1,0 +1,66 @@
+package practice;
+
+import java.util.Stack;
+
+
+public class evalutionpostfix {
+	public static 	Integer postfix(String s)
+	{
+	Stack<Integer> stack=new Stack<>();
+	for(int i=0;i<s.length();i++)
+	{
+		char c=s.charAt(i);
+		
+		if(Character.isDigit(c))
+		{
+			stack.push(c-'0');
+		}
+		else if(c=='+'||c=='-'||c=='*'||c=='/')
+		{
+			int p1=stack.pop();
+			int p2=stack.pop();
+			int r=0;
+			if(c=='+')
+			{
+				 r=p2+p1;
+				 stack.push(r);
+				
+			}
+			if(c=='-')
+			{r=p2-p1;
+			stack.push(r);
+			}
+				
+			
+			if(c=='*')
+			{
+				r=p2*p1;
+				stack.push(r);
+			}
+			if(c=='/')
+			{
+				r=p2/p1;
+				stack.push(r);
+			}
+			
+			
+			
+		}
+	
+	}
+	return stack.pop();
+	}
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String exp="231*+9-"; 
+        System.out.println("postfix evaluation: "+postfix(exp)); 
+    } 
+		
+		
+
+	}
+	
+ 
+
