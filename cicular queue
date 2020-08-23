@@ -1,0 +1,117 @@
+package practice;
+import java.util.Scanner;
+public class circularqueue {
+	private int front=-1;
+	private int rear=-1;
+private	int size=5;
+
+	
+private int a[]=new int[size];
+	public boolean isfull()
+	{
+		if(front==0&&rear==size-1)
+		{
+			
+			return true;   
+		}
+		if(front==rear+1)
+		{
+			return true;
+		}
+		
+		return false;
+	
+	}
+	public boolean isempty()
+	{
+		if(front==-1)
+		{
+			return true;
+		}
+		else
+			return false;
+	}
+	public void insert(int data)
+	{
+		if(isfull())
+
+	{
+		System.out.println("queue is full"+" ");
+	}
+
+	else
+		{
+		if(front==-1)
+		
+			front=0;
+		
+		rear=(rear+1)%size;
+		a[rear]=data;
+		System.out.println("inserted element"+" "+data+" ");
+		}	
+	}
+	public int dequeue()
+	{
+		if(isempty())
+		{
+			System.out.println("stack is empty"+" ");
+			return -1;
+		}
+		else
+		{
+		int ele=a[front];
+		if(front==rear)
+		{
+			front=-1;
+			rear=-1;
+		}
+		else {
+		front=(front+1)%size;
+		}
+		return (ele);
+	}
+	}
+	public void print()
+	{
+		if(front==-1)
+		{
+			System.out.println("queue is empty"+" ");
+		}
+		for(int i=front;i!=rear;i=(i+1)%size)
+		{
+			System.out.println(a[i]+" ");
+		}
+		System.out.println("rear" +a[rear]);
+		
+	}
+		
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner s=new Scanner(System.in);
+	//	int n=s.nextInt();
+		circularqueue q=new circularqueue();
+		int ch=0;
+		while(ch!=4)
+		{System.out.println("enter your choice"+" ");
+			ch=s.nextInt();
+			switch(ch)
+			{
+			case 1: System.out.println("enter elelment"+" ");
+			int x=s.nextInt();
+			q.insert(x);
+			break;
+			case 2:
+				System.out.println(q.dequeue());
+				break;
+			case 3:
+				q.print();
+				break;
+				
+			}
+		}
+		
+		
+
+	}
+
+}
