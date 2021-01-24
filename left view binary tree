@@ -1,0 +1,36 @@
+public class Solution {
+    public int[] solve(TreeNode A) {
+        Queue<TreeNode> q=new LinkedList<TreeNode>();
+        q.add(A);
+        int a[]=new int[100];
+int j=0;
+int size;
+        while(!q.isEmpty())
+        {
+            size=q.size();
+           
+            for(int i=1;i<=size;i++)
+            {  
+                TreeNode temp=q.poll();
+            
+                if(i==1)
+                {
+                    a[j]=temp.val;
+                    j++;
+                }
+                if(temp.left!=null)
+                {
+                    q.add(temp.left);
+                }
+                if(temp.right!=null)
+                {
+                    q.add(temp.right);
+                }
+            }
+        }
+        return a ;
+        
+        
+        
+    }
+}
