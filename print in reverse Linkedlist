@@ -1,0 +1,8 @@
+    static void reversePrint(SinglyLinkedListNode head) {
+if(head!=null)
+{
+    reversePrint(head.next);
+    System.out.println(head.data);
+}
+    }
+
