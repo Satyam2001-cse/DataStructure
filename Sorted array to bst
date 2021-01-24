@@ -1,0 +1,32 @@
+ */
+public class Solution {
+    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
+    public TreeNode sortedArrayToBST(final int[] A) {
+       TreeNode root=null ;
+       root=sorted(root,A,0);
+       return root;
+    }
+    public TreeNode sorted(TreeNode root,int[] A,int i)
+       {
+           int len=A.length;
+        if(root==null)
+        {
+            root=new TreeNode(A[i]);
+        }
+        i++;
+        if(i<len&&A[i]<root.val)
+        {
+            root.left=sorted(root.left,A,i);
+        }
+        if(i<len&&A[i]>root.val)
+        {
+            root.right=sorted(root.right,A,i);
+        }
+       return root; 
+        
+        
+    }
+    
+    
+    
+}
